@@ -65,7 +65,7 @@
             },
             test_data:[
                 {
-                    url:"/post/1/",
+                    url:"/post/1/", // use url match
                     response:{
                         code:1,
                         msg:"",
