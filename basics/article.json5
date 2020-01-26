@@ -1,0 +1,63 @@
+{
+    name:"Article",
+    api:[
+        {
+            name:"Article add or edit",
+            url:"/post/add/",
+            body:{
+                id:{name:"article id", desc:"has id field is edit, no id field is add", type:"number", required:false},
+                title:{},
+                summary:{},
+                category_id:{name:"category id", type:"number"},
+                author_name:{name:"author name"},
+                source:{name:"article source"},
+                tag:{name:"article tags"},
+            },
+            response:{
+                code:{name:"response result code", type:"int", desc:"success is 1"},
+                msg:{name:"response result message", type:"string", desc:""},
+                id: {name:"article id"}
+            }
+        },
+        {
+            name:"Article view",
+            method:"GET",
+            url:"/post/{id:\\d+}/",
+            response:{
+                code:{name:"response result code", type:"int", desc:"success is 1"},
+                msg:{name:"response result message", type:"string", desc:""},
+                data: {
+                    id:{name:"文章id", desc:"添加提交的时候是没有id, 编辑提交的时候才有", type:"number"},
+                    title:{name:"文章标题"},
+                    summary:{name:"文章摘要"},
+                    category_id:{name:"文章分类id", type:"number"},
+                    category_name:{name:"文章分类名称"},
+                    author_name:{name:"文章作者姓名"},
+                    source:{name:"文章来源"},
+                    tag:{name:"文章标签"},
+                    read_count:{name:"阅读次数", type:"number"},
+                    created:{name:"创建时间", type:"number"},
+                    create_username:{name:"文章创建人姓名"}
+                    }
+            }
+        },
+        {
+            name:"Article list",
+            method:"POST",
+            url:"/post/list/",
+            body:{
+                page:{name:"分页", type:"number"}
+            },
+            response:{
+                total_page: {name:"总页数", type:"number"},
+                total_count: {name:"总记录数", type:"number"},
+                current_page: {name:"当前页码", type:"number"},
+                result: 
+                    [{
+                        ref: "$article",
+                        include:["id", "title", "category_name", "author_name", "tag", "created"]
+                    }]
+            }
+        }
+    ]
+}
