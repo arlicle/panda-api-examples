@@ -46,16 +46,20 @@
             method:"POST",
             url:"/post/list/",
             body:{
-                page:{name:"分页", type:"number"}
+                page:{name:"page num", type:"number"}
             },
             response:{
-                total_page: {name:"总页数", type:"number"},
-                total_count: {name:"总记录数", type:"number"},
-                current_page: {name:"当前页码", type:"number"},
+                total_page: {name:"total page", type:"number"},
+                total_count: {name:"total item count", type:"number"},
+                current_page: {name:"current page num", type:"number"},
                 result: 
                     [{
-                        ref: "$article",
-                        include:["id", "title", "category_name", "author_name", "tag", "created"]
+                        id:{name:"文章id", desc:"添加提交的时候是没有id, 编辑提交的时候才有", type:"number"},
+                        title:{name:"文章标题"},
+                        category_name:{name:"文章分类名称"},
+                        author_name:{name:"文章作者姓名"},
+                        tag:{name:"文章标签"},
+                        created:{name:"创建时间", type:"number"}
                     }]
             }
         }
