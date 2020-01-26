@@ -106,12 +106,12 @@ get response:
 ``` json5
 result: 
     [{
-        id:{name:"文章id", desc:"添加提交的时候是没有id, 编辑提交的时候才有", type:"number"},
-        title:{name:"文章标题"},
-        category_name:{name:"文章分类名称"},
-        author_name:{name:"文章作者姓名"},
-        tag:{name:"文章标签"},
-        created:{name:"创建时间", type:"number"}
+        id:{name:"article id", type:"number"},
+        title:{name:"article title"},
+        category_name:{name:"article category name"},
+        author_name:{name:"article author name"},
+        tag:{name:"article tag"},
+        created:{name:"article created time", type:"number"}
     }]
 
 ```
