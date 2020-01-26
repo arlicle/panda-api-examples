@@ -99,3 +99,19 @@ get response:
 ```
 {code:-1, msg:"username and id not match"}
 ```
+
+
+## response a object list
+
+``` json5
+result: 
+    [{
+        id:{name:"文章id", desc:"添加提交的时候是没有id, 编辑提交的时候才有", type:"number"},
+        title:{name:"文章标题"},
+        category_name:{name:"文章分类名称"},
+        author_name:{name:"文章作者姓名"},
+        tag:{name:"文章标签"},
+        created:{name:"创建时间", type:"number"}
+    }]
+
+```
