@@ -27,6 +27,8 @@
                 code:{name:"response result code", type:"int", desc:"success is 1"},
                 msg:{name:"response result message", type:"string", desc:""},
                 data: {
+                    "-name":"data field name",
+                    "-desc":"data field description",
                     "$ref": "./_data/models.json:Article", // or do not use define
                     "$exclude":["category_id"]
                 }
@@ -47,6 +49,8 @@
                 current_page: {name:"current page num", type:"number"},
                 result: 
                     [{
+                        "-name":"result field name",
+                        "-desc":"result field description",
                         "$ref": "$article",
                         "$include":["id", "title", "category_name", "author_name", "tag", "created"]
                     }]
