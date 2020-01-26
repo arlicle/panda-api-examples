@@ -91,6 +91,7 @@
                     },
                 },
                 {
+                    // other url auto create mock data
                     "$mock":true
                 }
             ]
