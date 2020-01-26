@@ -22,7 +22,7 @@
         {
             name:"Article view",
             method:"GET",
-            url:"/post/{id:\\d+}/",
+            url:"/post/{id:\\d+}/", // the url support regex match
             response:{
                 code:{name:"response result code", type:"int", desc:"success is 1"},
                 msg:{name:"response result message", type:"string", desc:""},

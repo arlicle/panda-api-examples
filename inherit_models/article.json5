@@ -1,6 +1,7 @@
 {
     name:"Article",
     define:{
+        models: "./_data/models.json",
         article: "./_data/models.json:Article"
     },
     api:[
@@ -51,7 +52,7 @@
                     [{
                         "-name":"result field name",
                         "-desc":"result field description",
-                        "$ref": "$article",
+                        "$ref": "$models:Article", // ref models
                         "$include":["id", "title", "category_name", "author_name", "tag", "created"]
                     }]
             }
