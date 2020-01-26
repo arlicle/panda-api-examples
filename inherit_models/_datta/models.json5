@@ -3,6 +3,7 @@
         id:{name:"article id", type:"number"},
         title:{name:"article title"},
         summary:{name:"article summary"},
+        category_id:{name:"category id", type:"number"},
         category_name:{name:"article category name"},
         author_name:{name:"article author name"},
         source:{name:"article source"},
