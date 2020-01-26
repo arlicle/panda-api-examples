@@ -48,6 +48,8 @@
                 page:{name:"page num", type:"number"}
             },
             response:{
+                code:{name:"response result code", type:"int", desc:"success is 1"},
+                msg:{name:"response result message", type:"string", desc:""},
                 total_page: {name:"total page", type:"number"},
                 total_count: {name:"total item count", type:"number"},
                 current_page: {name:"current page num", type:"number"},

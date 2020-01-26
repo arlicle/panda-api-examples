@@ -14,8 +14,6 @@
 
             },
             response:{
-                code:{name:"response result code", type:"int", desc:"success is 1"},
-                msg:{name:"response result message", type:"string", desc:""},
                 id: {name:"article id"}
             }
         },
@@ -24,8 +22,6 @@
             method:"GET",
             url:"/post/{id:\\d+}/",
             response:{
-                code:{name:"response result code", type:"int", desc:"success is 1"},
-                msg:{name:"response result message", type:"string", desc:""},
                 data: {
                     "$ref": "$article:Article",
                     "$exclude":["category_id"]
@@ -40,8 +36,6 @@
                 page:{name:"page num", type:"number"}
             },
             response:{
-                code:{name:"response result code", type:"int", desc:"success is 1"},
-                msg:{name:"response result message", type:"string", desc:""},
                 total_page: {name:"total page", type:"number"},
                 total_count: {name:"total item count", type:"number"},
                 current_page: {name:"current page num", type:"number"},
