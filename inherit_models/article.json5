@@ -8,7 +8,7 @@
             name:"Article add or edit",
             url:"/post/add/",
             body:{
-                "$ref": "$article:Article",
+                "$ref": "$article", // $article is in the define
                 "$include":["id", "title", "summary", "category_id", "author_name", "source", "tag"],
                 id:{name:"article id", desc:"has id field is edit, no id field is add", type:"number", required:false},
 
@@ -27,7 +27,7 @@
                 code:{name:"response result code", type:"int", desc:"success is 1"},
                 msg:{name:"response result message", type:"string", desc:""},
                 data: {
-                    "$ref": "$article:Article",
+                    "$ref": "./_data/models.json:Article", // or do not use define
                     "$exclude":["category_id"]
                 }
             }
@@ -47,7 +47,7 @@
                 current_page: {name:"current page num", type:"number"},
                 result: 
                     [{
-                        "$ref": "$article:Article",
+                        "$ref": "$article",
                         "$include":["id", "title", "category_name", "author_name", "tag", "created"]
                     }]
             }
