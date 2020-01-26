@@ -101,7 +101,7 @@ get response:
 ```
 
 
-## response a object list
+## a object list
 
 ``` json5
 result: 
