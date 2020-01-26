@@ -1,0 +1,70 @@
+{
+    name:"Auth",
+    desc:"user login and logout",
+    order:1,
+    api:
+    [{
+        name:"user login",
+        desc:"if user login success, will get a token",
+        method: "POST",
+        url:"/login/",
+        body_mode:"json", // form-data, text, json, html, xml, javascript, binary
+        body:{
+            username:{name: "username"},
+            password:{name: "password"}
+        },
+        response:{
+            code:{name:"response result code", type:"int", desc:"success is 1"},
+            msg:{name:"response result message", type:"string", desc:""},
+            token:{name:"login success, get a user token; login failed, no token", type:"string", required:false}
+        },
+        test_data:[
+            {
+                body:{username:"edison", password:"123"},
+                response:{code:-1, msg:"password incorrect"}
+            },
+            {
+                body:{username:"lily", password:"123"},
+                response:{code:-2, msg:"username not exist"}
+            },
+            {
+                body:{username:"root", password:"123"},
+                response:{code:1, msg:"login success", token:"fjdlkfjlafjdlaj3jk2l4j"}
+            },
+            {
+                body:{username:"lily"},
+                response:{code:-1, msg:"password is required"}
+            },
+            {
+                body:{password:"123"},
+                response:{code:-1, msg:"username is required"}
+            }
+        ]
+    },
+    {
+        name:"user logout",
+        method:"GET",
+        url:"/logout/",
+        query:{
+            id:{name:"user id"},
+            username:{}
+        },
+        response:{
+            code:{name:"response result code", type:"int", desc:"success is 1"},
+            msg:{name:"response result message", type:"string", desc:""}
+        },
+        test_data:[
+            {
+                query:{id:1, username:"root"},
+                response:{code:1, msg:"logout success"}
+            },
+            {
+                response:{code:-1, msg:"error"}
+            },
+            {
+                query:{id:3, username:"lily"},
+                response:{code:-1, msg:"username and id not match"}
+            }
+        ]
+    }
+]}
