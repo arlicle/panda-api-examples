@@ -4,7 +4,7 @@
         models: "./_data/models.json",
         article: "./_data/models.json:Article"
     },
-    api:[
+    apis:[
         {
             name:"Article add or edit",
             url:"/post/add/",

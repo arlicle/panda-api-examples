@@ -1,0 +1,70 @@
+{
+    name:"用户", // 整个接口文档的名称
+    desc:"用户登录系统、退出登录系统", // 整个接口文档的描述
+    order:1, // 接口文档的显示顺序
+    apis:
+    [{
+        name:"用户登录", // 接口文档中 单个接口的名称
+        desc:"用户登录成功，接口会返回一个token", // 接口文档中，当个接口的描述，可以不设置，默认为空
+        method: "POST", // 接口的请求方法
+        url:"/login/", // 接口的访问地址
+        body_mode:"json", // 请求body数据的格式
+        body:{ // 请求body的数据结构字段说明
+            username:{name:"用户名"}, // 没有设置字段类型，默认type是string
+            password:{name:"用户登录密码"} // 没有设置字段类型，默认type是string
+        },
+        response:{ // 请求成功后的返回数据结构和字段
+            code:{name:"返回结果的代码", type:"int", desc:"登录成功只返回1", enum:[-1, 1]},// 设置了字段类型是int, 增加了code的值范围
+            msg:{name:"登录成功返回消息", type:"csentence", desc:"通常返回都是空"}, // 字段类型从 string 改为 csentence， 表示中文句子，也可以使用简写cs
+            token:{name:"登录成功返回的用户token", type:"string", required:false, length:60} // 限定token的length长度为60
+        },
+        test_data:[ // test_data表示请求数据和对应返回结果数据的测试用例
+            {
+                body:{username:"edison", password:"123"},
+                response:{code:-1, msg:"密码输入不正确"}
+            },
+            {
+                body:{username:"lily", password:"123"},
+                response:{code:-2, msg:"用户名不存在"}
+            },
+            {
+                body:{username:"root", password:"123"},
+                response:{code:1, msg:"登录成功", token:"5lCadRru(ADn2IE!$LV%x%JF3JNmz*Nf5nFieUG!r((&esi2CLI$jb!227Lh"}
+            },
+            {
+                body:{username:"lily"},
+                response:{code:-1, msg:"密码是必填的"}
+            },
+            {
+                body:{password:"123"},
+                response:{code:-1, msg:"用户名是必填的"}
+            }
+        ]
+    },
+    {
+        name:"用户退出登录",
+        method:"GET", // 使用GET方法请求
+        url:"/logout/",
+        query:{ // GET 方法请求的query参数的数据结构字段说明
+            id:{name:"用户id"},
+            username:{name:"用户名"}
+        },
+        response:{
+            code:{name:"返回结果的代码", type:"int", desc:"退出成功只返回1"},
+            msg:{name:"退出操作返回消息", type:"string", desc:"通常返回都是空"}
+        },
+        test_data:[
+            {
+                query:{id:1, username:"root"},
+                response:{code:1, msg:"退出成功"}
+            },
+            {
+                response:{code:-1, msg:"非法操作"}
+            },
+            {
+                query:{id:3, username:"lily"},
+                response:{code:-1, msg:"用户名和id不匹配"}
+            }
+        ]
+    }
+]}
