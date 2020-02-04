@@ -59,11 +59,11 @@
                 response:{code:1, msg:"退出成功"}
             },
             {
-                response:{code:-1, msg:"非法操作"}
-            },
-            {
                 query:{id:3, username:"lily"},
                 response:{code:-1, msg:"用户名和id不匹配"}
+            },
+            {
+                response:{code:-1, msg:"必须填写用户名id和用户名"}
             }
         ]
     }
