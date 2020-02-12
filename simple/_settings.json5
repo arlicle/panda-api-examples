@@ -3,7 +3,7 @@
   project_desc: "Panda Api is a simple api manage tool",
   global: {
     apis: {
-      auth:true
+      auth:false
     }
   }
 }

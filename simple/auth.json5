@@ -29,7 +29,7 @@
             },
             {
                 body:{username:"root", password:"123"},
-                response:{code:1, msg:"登录成功", token:"5lCadRru(ADn2IE!$LV%x%JF3JNmz*Nf5nFieUG!r((&esi2CLI$jb!227Lh"}
+                response:{code:1, msg:"登录成功", token:{$mock:true, required:true}}
             },
             {
                 body:{username:"lily"},
@@ -46,7 +46,7 @@
         method:"GET", // 使用GET方法请求
         url:"/logout/",
         query:{ // GET 方法请求的query参数的数据结构字段说明
-            id:{name:"用户id"},
+            id:{name:"用户id", type:"number"},
             username:{name:"用户名"}
         },
         response:{

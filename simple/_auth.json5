@@ -18,7 +18,7 @@
         }
         ],
         has_perms:[["*", "GET", "POST"]], // *星号表示拥有所有接口的全部权限
-        no_perms:[["/admin/user/", "GET"]], // 表示没有权限的列表，没有权限列表优先
+        no_perms:[["/admin/user/", "GET"],["/admin/user2/", "POST", "PUT"]], // 表示没有权限的列表，没有权限列表优先
         no_perm_response: {
             code: -1,
             msg: "没有权限非法操作"
