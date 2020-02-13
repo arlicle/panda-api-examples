@@ -5,5 +5,5 @@
     apis: {
       auth:false
     }
-  }
+  },
 }
