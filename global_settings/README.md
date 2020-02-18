@@ -9,10 +9,10 @@ response:{
     // code:{name:"response result code", type:"int", desc:"success is 1"}, // remove the field code
     // msg:{name:"response result message", type:"string", desc:""}, // remove the field msg
     data: {
-        "-name":"data field name",
-        "-desc":"data field description",
-        "$ref": "./_data/models.json:Article", // or do not use define
-        "$exclude":["category_id"]
+        $name:"data field name",
+        $desc:"data field description",
+        $ref: "./_data/models.json:Article", // or do not use define
+        $exclude:["category_id"]
     }
 }
 ```

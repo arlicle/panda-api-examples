@@ -2,11 +2,11 @@
     project_name: "Panda Api",
     project_desc: "Panda Api is a simple api manage tool",
     global: {
-    apis:{
-        response:{
-        code:{name:"response result code", type:"int", desc:"success is 1"},
-        msg:{name:"response result message", type:"string", desc:""},
-      }
+        apis:{
+            response:{
+                code:{name:"response result code", type:"int", desc:"success is 1", $enum=[[-1, "Failed"], [1, "Sucess"]]},
+                msg:{name:"response result message", type:"string", desc:""},
+            }
+        }
     }
-  }
 }

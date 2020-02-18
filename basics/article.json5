@@ -7,9 +7,9 @@
             body_mode:"json",
             body:{
                 id:{name:"article id", desc:"has id field is edit, no id field is add", type:"number", required:false},
-                title:{},
-                summary:{},
-                content:{},
+                title:{name:"article title"}, // default type is string
+                summary:{name:"summary"},
+                content:{name:"content"},
                 category_id:{name:"category id", type:"number"},
                 author_name:{name:"author name"},
                 source:{name:"article source"},
@@ -17,7 +17,7 @@
             },
             response:{
                 code:{name:"response result code", type:"int", desc:"success is 1"},
-                msg:{name:"response result message", type:"string", desc:""},
+                msg:{name:"response result message", type:"string"},
                 id: {name:"article id"}
             },
             test_data:[
@@ -27,6 +27,24 @@
                         title:"Hello World",
                         summary:"This is the first post",
                         content:"This is the first post, and it is a test case data",
+                        category_id: 1,
+                        author_name:"Edison",
+                        source:"Panda api",
+                        tag:"test"
+                    },
+                    response:{
+                        code: 1,
+                        msg:"post done",
+                        id: 1,
+                    }
+                },
+                {
+                    // edit a article
+                    body:{
+                        id:1,
+                        title:"Hello World2",
+                        summary:"This is the first post2",
+                        content:"This is the first post, and it is a test case data2",
                         category_id: 1,
                         author_name:"Edison",
                         source:"Panda api",

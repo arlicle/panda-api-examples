@@ -1,15 +1,20 @@
 {
     Article:{
-        id:{name:"article id", type:"number"},
+        id:{name:"article id", type:"PosInt"},
         title:{name:"article title"},
         summary:{name:"article summary"},
-        category_id:{name:"category id", type:"number"},
-        category_name:{name:"article category name"},
+        category:{
+            id:{name:"category id", type:"PosInt"},
+            name:{name:"article category name"}
+        },
         author_name:{name:"article author name"},
         source:{name:"article source"},
-        tag:{name:"article tag"},
-        read_count:{name:"article read count", type:"number"},
-        created:{name:"article created time", type:"number"},
+        tags:[{
+            id:{name:"Tag id", type:"PosInt"},
+            name:{name:"Tag name"}
+        }],
+        read_count:{name:"article read count", type:"PosInt"},
+        created:{name:"article created time", type:"PosInt"},
         create_username:{name:"article created username"}
     }
 }

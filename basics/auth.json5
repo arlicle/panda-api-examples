@@ -16,7 +16,7 @@
         response:{
             code:{name:"response result code", type:"int", desc:"success is 1"},
             msg:{name:"response result message", type:"string", desc:""},
-            token:{name:"login success, get a user token; login failed, no token", type:"string", required:false}
+            token:{name:"login success, get a user token; login failed, no token", type:"string", required:false, length:64}
         },
         test_data:[
             {
@@ -29,7 +29,8 @@
             },
             {
                 body:{username:"root", password:"123"},
-                response:{code:1, msg:"login success", token:"fjdlkfjlafjdlaj3jk2l4j"}
+                // {$mock:true}, token field will get mock string, the token mock rule is from response/token
+                response:{code:1, msg:"login success", token:{$mock:true, required:true}} 
             },
             {
                 body:{username:"lily"},

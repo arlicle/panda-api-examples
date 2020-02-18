@@ -10,12 +10,13 @@
             url:"/post/add/",
             body:{
                 $ref: "$article", // $article is in the define
-                $include:["id", "title", "summary", "category_id", "author_name", "source", "tag"],
-                id:{name:"article id", desc:"has id field is edit, no id field is add", type:"number", required:false},
-
+                $include:["id", "title", "summary", "category", "author_name", "source", "tags"],
+                $exclude:["category/name", "tags/0/name"],
+                // rewrite the id field
+                id:{name:"article id", desc:"has id field is edit, no id field is add", type:"PosInt", required:false},
             },
             response:{
-                id: {name:"article id"}
+                id: {name:"article id", type:"PosInt"}
             }
         },
         {
@@ -27,7 +28,7 @@
                     $name:"data field name",
                     $desc:"data field description",
                     $ref: "./_data/models.json:Article", // or do not use define
-                    $exclude:["category_id"]
+                    $exclude:["category/id"]
                 }
             }
         },
@@ -47,7 +48,7 @@
                         $name:"result field name",
                         $desc:"result field description",
                         $ref: "$models:Article", // ref models
-                        $include:["id", "title", "category_name", "author_name", "tag", "created"]
+                        $include:["id", "title", "category", "author_name", "tags", "created"]
                     }]
             }
         }
