@@ -14,7 +14,7 @@
             password:{name:"用户登录密码"} // 没有设置字段类型，默认type是string
         },
         response:{ // 请求成功后的返回数据结构和字段
-            code:{name:"返回结果的代码", type:"int", desc:"登录成功只返回1", enum:[-1, 1]},// 设置了字段类型是int, 增加了code的值范围
+            code:{name:"返回结果的代码", type:"int", desc:"登录成功只返回1", $enum:[[-1, "失败"], [1, "成功"]]},// 设置了字段类型是int, 增加了code的值范围
             msg:{name:"登录成功返回消息", type:"csentence", desc:"通常返回都是空"}, // 字段类型从 string 改为 csentence， 表示中文句子，也可以使用简写cs
             token:{name:"登录成功返回的用户token", type:"string", required:false, length:60} // 限定token的length长度为60
         },

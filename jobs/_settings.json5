@@ -1,0 +1,12 @@
+{
+    project_name:"律品招聘程序",
+    project_desc:"让法律服务触手可及",
+    global:{
+        apis:{
+            response:{
+                code:{name:"返回状态码", type:"int", $enum:[[-1, "失败"], [1, "成功"]], $order:0},
+                msg:{name:"返回状态信息", $order:1}
+            }
+        }
+    }
+}

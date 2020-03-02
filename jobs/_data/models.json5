@@ -1,0 +1,30 @@
+{
+    Job:{
+        id:{name:"职位id", type:"Int", $order:0},
+        title:{name:"职位名称", type:"cword", min_length:2, max_length:10, $order:1},
+        kind:{name:"招聘类别", type:"int", $enum:[[1, "社会招聘"], [2, "校园招聘"]], $order:2},
+        location_id:{name:"工作地点id", type:"PosInt", $order:3},
+        job_cat_id:{name:"职位类别id", type:"PosInt", $order:4},
+        salary:{name:"薪酬", $order:5},
+        intro:{name:"职位说明", type:"cp", $order:6},
+        order:{name:"排序", type:"int", $order:7},
+        is_visible:{name:"是否显示", type:"bool", default:true, $order:8},
+        last_modified:{name:"最后更新时间", type:"datetime", $order:9},
+        created:{name:"最后更新时间", type:"datetime", $order:10},
+        // created_user_id:{name:"添加人id", type:"PosInt"}
+    },
+    JobCat:{
+        id:{name:"id", type:"Int", $order:0},
+        name:{name:"分类名称", type:"cword", min_length:2, max_length:4, $order:1},
+        order:{name:"排序", type:"int", $order:2},
+        is_visible:{name:"是否显示", type:"bool", default:true, $order:3},
+
+    },
+    JobLocation:{
+        id:{name:"id", type:"Int", $order:0},
+        name:{name:"工作地点名称", type:"cword", min_length:2, max_length:4, $order:1},
+        order:{name:"排序", type:"int", $order:2},
+        is_visible:{name:"是否显示", type:"bool", default:true, $order:3},
+
+    }
+}

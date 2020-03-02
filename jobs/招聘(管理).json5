@@ -1,0 +1,106 @@
+{
+    name:"招聘(管理)",
+    order:2,
+    apis:[
+        {
+            name:"职位列表",
+            url:"/admin/job/list/",
+            auth:true,
+            method:"GET",
+            query:{
+                $ref:"./_data/models.json5:Job",
+                $include:["kind", "location_id", "job_cat_id"],
+                "kind/required":false, // 重写字段属性
+                "location_id/required":false,
+                "job_cat_id/required":false,
+                page:{name:"分页页码", type:"PosInt", required:false},
+            },
+            response:{
+                items:[{
+                    $ref:"./_data/models.json5:Job",
+                    $order:3,
+                }]
+            }
+        },{
+            name:"职位详情查看",
+            url:"/admin/job/{job_id:\\d+}/",
+            auth:true,
+            url_param:{
+                job_id:{name:"职位id", type:"PosInt"}
+            },
+            method: "GET",
+            response:{
+                item:{
+                    $ref:"./_data/models.json5:Job",
+                    $order:3,
+                },
+                
+            }
+        },{
+            name:"职位添加或编辑",
+            desc:"添加的时候body中没有id, 编辑的时候body中有id",
+            url:"/admin/job/add/",
+            auth:true,
+            body_mode:"json",
+            method: "POST",
+            body:{
+                $ref:"./_data/models.json5:Job",
+                "id/required":false,
+                $exclude:["last_modified", "created"]
+            },
+            response:{
+                id:{$ref:"./_data/models.json5:JobCat/id"}
+            }
+        },{
+            name:"职位分类列表",
+            url:"/admin/job/cat/list/",
+            auth:true,
+            method: "GET",
+            response:{
+                items:[{
+                    $ref:"./_data/models.json5:JobCat",
+                    $order:3,
+                }]
+            }
+        },{
+            name:"职位分类添加或编辑",
+            desc:"添加的时候body中没有id, 编辑的时候body中有id",
+            url:"/admin/job/cat/add/",
+            auth:true,
+            body_mode:"json",
+            method: "POST",
+            body:{
+                $ref:"./_data/models.json5:JobCat",
+                "id/required":false,
+            },
+            response:{
+                id:{$ref:"./_data/models.json5:JobCat/id"}
+            }
+        },{
+            name:"工作地点列表",
+            url:"/admin/job/location/list/",
+            auth:true,
+            method: "GET",
+            response:{
+                items:[{
+                    $ref:"./_data/models.json5:JobLocation",
+                    $order:3,
+                }]
+            }
+        },{
+            name:"工作地点添加或编辑",
+            desc:"添加的时候body中没有id, 编辑的时候body中有id",
+            url:"/admin/job/location/add/",
+            auth:true,
+            body_mode:"json",
+            method: "POST",
+            body:{
+                $ref:"./_data/models.json5:JobLocation",
+                "id/required":false,
+            },
+            response:{
+                id:{$ref:"./_data/models.json5:JobLocation/id"}
+            }
+        }
+    ]
+}

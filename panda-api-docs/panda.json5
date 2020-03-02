@@ -1,0 +1,35 @@
+{
+    name:"Panda api docs",
+    apis:[
+        {
+            name:"Basic Info",
+            desc:"Get the project info and api doc list",
+            url:"/__api_docs/",
+            method:"GET",
+            response:{
+                project_name:{name:"Project name"},
+                project_desc:{name:"Project desc"},
+                read_me:{name:"Project intro"},
+                api_docs:[{
+                    $name:"Api doc list",
+                    name:{name:"Api doc name"},
+                    desc:{name:"Api doc description"},
+                    filename:{name:"Api doc filename"},
+                    filetype:{name:"Api doc file type"},
+                    order:{name:"Api doc on menu order", type:"int"},
+                    children:{
+                        $type:"map",
+                        $key:{name:"文档地址"},
+                        $value:{
+                            $ref:"{$parent}",
+                            min_length:0,
+                            max_length:10
+                        },
+                        min_length:0,
+                        max_length:10
+                    }
+                }]
+            }
+        },
+    ]
+}

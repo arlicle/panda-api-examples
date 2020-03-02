@@ -1,0 +1,110 @@
+{
+    name:"招聘(访客)",
+    order:1,
+    apis:[
+        {
+            name:"职位列表",
+            url:"/job/list/",
+            method:"GET",
+            query:{
+                $ref:"./_data/models.json5:Job",
+                $include:["kind", "location_id", "job_cat_id"], // 只要这三个字段
+                "kind/required":false, // 重写字段属性
+                "location_id/required":false,
+                "job_cat_id/required":false,
+                page:{name:"分页页码", type:"PosInt", required:false,$order:100}, // 新增字段
+            },
+            response:{
+                items:[{
+                    $ref:"./_data/models.json5:Job",
+                    $exclude:["is_visible", "created", "created_user_id"],
+                    $order:3,
+                }]
+            }
+        },{
+            name:"职位详情查看",
+            url:"/job/{job_id:\\d+}/",
+            url_param:{
+                job_id:{name:"职位id", type:"PosInt"}
+            },
+            method: "GET",
+            response:{
+                item:{
+                    $ref:"./_data/models.json5:Job",
+                    $exclude:["is_visible", "created", "created_user_id"],
+                    $order:3,
+                }
+            },
+            test_data:[{
+                url:"/job/1/",
+                response:{
+                    code:1,
+                    msg:"",
+                    data: {
+                          id: 1,
+                          title: '区域销售经理-全国',
+                          kind:1,
+                          location_id:1,
+                          job_cat_id:1,
+                          salary:'面议',
+                          intro:'
+                              <p>1、负责区域软件产品、硬件设备的销售工作，完成销售任务；</p>
+                              <p>2、做好本区域客户、渠道商的开拓、维护及服务工作；</p>
+                              <p>3、准确理解及判断客户的业务需求并进行及时有效的引导、跟踪及推进；</p>
+                              <p>4、把握客户商机、制定解决方案、编写文案、组织投标、与客户开展商务谈判；</p>
+                              <p>5、负责区域内项目的商务洽谈、签订合同、回收款项等工作；</p>
+                              <p> 6、组织调研区域内竞争对手信息，以及客户需求。</p>
+                              ',
+                          order:1,
+                          last_modified:'2020-12-12',
+                          created:'2020-12-12',
+                          created_user_id:1
+                    }
+                },
+              }
+            ]
+        },
+        {
+            name:"职位分类列表",
+            url:"/job/cat/list/",
+            method: "GET",
+            response:{
+                items:[{
+                    $ref:"./_data/models.json5:JobCat",
+                    $exclude:["is_visible"],
+                    $order:3,
+                }]
+            }
+        },{
+            name:"工作地点列表",
+            url:"/job/location/list/",
+            method: "GET",
+            response:{
+                items:[{
+                    $ref:"./_data/models.json5:JobLocation",
+                    $exclude:["is_visible"],
+                    $order:3,
+                }]
+            },
+            test_data:[
+            {
+                response:{
+                    items:[
+                    {
+                        name:"不限",
+                        order:1,
+                    },
+                    {
+                        name:"北京",
+                        order:2,
+                    },
+                    {
+                        name:"昆明",
+                        order:3,
+                    }]
+                }
+            }
+            ]
+        }
+    ]
+}
